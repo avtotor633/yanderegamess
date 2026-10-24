@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Yandere School 3D — Прототип</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div id="loading">
+    <div class="loader-title">YANDERE SCHOOL 3D</div>
+    <div class="loader-bar"><div id="loader-progress"></div></div>
+    <div id="loader-text">Загрузка кампуса...</div>
+  </div>
+
+  <div id="ui">
+    <!-- Верхняя панель -->
+    <div id="top-bar">
+      <div id="time-display">08:00</div>
+      <div id="reputation">Репутация: <span id="rep-val">50</span></div>
+      <div id="suspicion">Подозрение: <span id="sus-val">0</span>%</div>
+    </div>
+
+    <!-- Задание -->
+    <div id="quest-box">
+      <div class="quest-title">Текущее задание</div>
+      <div id="quest-text">Найди Сэмпая во дворе</div>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="notifications"></div>
+
+    <!-- Диалог -->
+    <div id="dialog-box" class="hidden">
+      <div id="dialog-name"></div>
+      <div id="dialog-text"></div>
+      <button id="dialog-close">Закрыть</button>
+    </div>
+
+    <!-- Пауза / Настройки -->
+    <div id="pause-menu" class="hidden">
+      <h2>Пауза</h2>
+      <div class="setting">
+        <label>Чувствительность камеры</label>
+        <input type="range" id="cam-sens" min="0.5" max="3" step="0.1" value="1.2">
+      </div>
+      <div class="setting">
+        <label>Громкость</label>
+        <input type="range" id="vol-range" min="0" max="1" step="0.05" value="0.6">
+      </div>
+      <div class="setting">
+        <label>Качество графики</label>
+        <select id="quality">
+          <option value="low">Низкое</option>
+          <option value="medium" selected>Среднее</option>
+          <option value="high">Высокое</option>
+        </select>
+      </div>
+      <button id="resume-btn">Продолжить</button>
+      <button id="restart-btn">Перезапуск</button>
+    </div>
+
+    <!-- Журнал событий -->
+    <div id="log-panel" class="hidden">
+      <h3>Журнал событий</h3>
+      <div id="log-content"></div>
+      <button id="close-log">Закрыть</button>
+    </div>
+
+    <!-- Карта (простая) -->
+    <div id="map-panel" class="hidden">
+      <h3>Карта кампуса</h3>
+      <canvas id="minimap" width="280" height="200"></canvas>
+      <button id="close-map">Закрыть</button>
+    </div>
+  </div>
+
+  <!-- Мобильное управление -->
+  <div id="controls">
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-knob"></div>
+      </div>
+    </div>
+
+    <div id="right-controls">
+      <div id="camera-swipe-area"></div>
+      <button id="btn-run" class="action-btn">Бег</button>
+      <button id="btn-interact" class="action-btn">Действие</button>
+      <button id="btn-laugh" class="action-btn laugh">Ха-ха</button>
+      <button id="btn-crouch" class="action-btn">Скрыт.</button>
+      <button id="btn-look" class="action-btn">Осмотр</button>
+      <button id="btn-pause" class="action-btn">❚❚</button>
+      <button id="btn-log" class="action-btn small">Журн.</button>
+      <button id="btn-map" class="action-btn small">Карта</button>
+    </div>
+  </div>
+
+  <div id="error-box" class="hidden"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
